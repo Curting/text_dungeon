@@ -8,23 +8,11 @@ class Dungeon
     @rooms = []
   end
 
-  class Player
-    attr_accessor :name, :location
+  Player = Struct.new(:name, :location)
+  Room = Struct.new(:reference, :name, :description, :connections)
 
-    def initialize(player_name)
-      @name = player_name
-    end
+  def add_room(reference, name, description, connections)
+    @rooms << Room.new(reference, name, description, connections)
   end
 
-  class Room
-    attr_accessor :reference, :name, :description, :connections
-
-    def initialize(reference, name, description, connections)
-      @reference = reference
-      @name = name
-      @description = description
-      @connections = connections
-    end
-  end
-  
 end
